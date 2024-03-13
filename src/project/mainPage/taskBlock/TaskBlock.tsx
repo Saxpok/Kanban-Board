@@ -1,5 +1,5 @@
 import React from "react";
-import Tasklist from "../../ui/taskList/TaskList";
+import Tasklist from "../../../ui/taskList/TaskList";
 import "./TaskBlock.style.css"
 
 const TaskBlock = () => {
