@@ -1,10 +1,11 @@
 import Input from "antd/es/input/Input";
 import React from "react";
+import "./RepoInput.style.css"
 
 const RepoInput = () => {
     return (
         <div className="RepoInput">
-            <Input></Input>
+            <Input placeholder="Enter repo URL"></Input>
         </div>
     )
 }
