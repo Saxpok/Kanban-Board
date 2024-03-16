@@ -2,10 +2,14 @@ import React from "react";
 import { Button } from "antd";
 import "./RepoButton.style.css"
 
-const RepoButton = () => {
+interface RepoButtonProps {
+    clickHandler: () => void
+}
+
+const RepoButton = ({clickHandler}: RepoButtonProps) => {
     return (
         <div className="RepoButton">
-            <Button>Load Issues</Button>
+            <Button onPointerDown={clickHandler}>Load Issues</Button>
         </div>
     )
 

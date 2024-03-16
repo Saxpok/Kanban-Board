@@ -2,10 +2,14 @@ import Input from "antd/es/input/Input";
 import React from "react";
 import "./RepoInput.style.css"
 
-const RepoInput = () => {
+interface RepoInputProps {
+    changeHandler?: (event: React.ChangeEvent) => void
+}
+
+const RepoInput = ({changeHandler}: RepoInputProps) => {
     return (
         <div className="RepoInput">
-            <Input placeholder="Enter repo URL"></Input>
+            <Input onChange={changeHandler} placeholder="Enter repo URL"></Input>
         </div>
     )
 }

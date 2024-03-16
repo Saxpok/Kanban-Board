@@ -1,9 +1,13 @@
 import React from "react";
 import "./Path.style.css"
 
-const Path = () => {
+interface PathProps {
+    path?: string
+}
+
+const Path = ({path}: PathProps) => {
     return (
-        <div className="Path"> File - file</div>
+        <div className="Path">{path}</div>
     )
 }
 

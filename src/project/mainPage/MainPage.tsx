@@ -3,22 +3,23 @@ import RepoSearch from "./repoSearch/RepoSearch";
 import "./MainPage.style.css"
 import RepoInfo from "./repoInfo/RepoInfo";
 import TaskBlock from "./taskBlock/TaskBlock";
-
-const request = 'facebook/react'
+import { store, useAppSelector } from "../../store/store";
+import LoadingOutlined from "@ant-design/icons/lib/icons/LoadingOutlined";
 
 const MainPage = () => {
-    useEffect(() => {
-        fetch(`https://api.github.com/repos/${request}/issues`)
-            .then((res) => res.json())
-            .then(console.log)
-    })
 
-
+    const isLoading = useAppSelector((store) => store.issues.isLoading)
+    
     return (
         <div className="MainPage">
             <RepoSearch />
-            <RepoInfo />
-            <TaskBlock />
+            {isLoading?
+             <LoadingOutlined />:
+            <> 
+              <RepoInfo />
+              <TaskBlock/> 
+            </>
+            }   
         </div>
     )
 }
