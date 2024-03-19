@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Tasklist from "../../../ui/taskList/TaskList";
-import "./TaskBlock.style.css"
-import { store, useAppSelector } from "../../../store/store";
 
-type List = 'open' | 'inProgress' | 'done'
+import Tasklist from "../../../ui/taskList/TaskList";
+
+import "./TaskBlock.style.css"
+
+type List = 'open' | 'inProgress' | 'done' //move to types
 
 const LISTS: List[] = ['open', 'inProgress', 'done']
 
@@ -18,13 +19,19 @@ const TaskBlock = () => {
     const makeTaskLIsts = (types: List[]) => {
         return types.map((item, i) => {
             return (
-                <Tasklist onDragOverHandler={(e: React.DragEvent) => pickListForDrop(e, item)} dropTarget={currentDropTarget} key={i} stage={item} title={item}/>  
+                <Tasklist 
+                onDragOverHandler={(e: React.DragEvent) => pickListForDrop(e, item)} 
+                dropTarget={currentDropTarget} 
+                key={i} 
+                stage={item} 
+                title={item}
+                />  
             )
         })
     }
 
     return (
-        <div  className="TaskBlock">
+        <div className="TaskBlock">
             {makeTaskLIsts(LISTS)}
         </div>
     )

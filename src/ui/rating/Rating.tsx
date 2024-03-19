@@ -1,16 +1,13 @@
-import React, { useEffect } from "react";
+import { useAppSelector } from "../../store/store";
+
 import "./Rating.style.css"
 
 const Rating = () => {
 
-    // useEffect(() => {
-    //     fetch('http://api.github.com/repos/facebook/react')
-    //         .then((res) => res.json())
-    //         .then(console.log)
-    // })
+    const stars: number = useAppSelector((store) => store.issues.stars)
 
     return (
-        <div className="Rating">{}</div>
+        <div className="Rating">⭐️{stars / 1000} K stars</div>
     )
 }
 

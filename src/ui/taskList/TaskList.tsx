@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+
 import Task from "../task/Task";
-import "./TaskList.style.css"
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { TaskInterface } from "../../types";
 import { addIssue, removeIssue } from "../../store/slices/getIssuesSlice";
 
+import "./TaskList.style.css"
 
-interface TaskListProps {
+
+interface TaskListProps { //move to types
     title?: 'open' | 'inProgress' | 'done'
     stage: 'open' | 'inProgress' | 'done',
     dropTarget: 'open' | 'inProgress' | 'done' | undefined,

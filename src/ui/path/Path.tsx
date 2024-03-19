@@ -1,11 +1,11 @@
-import React from "react";
 import "./Path.style.css"
 
-interface PathProps {
+interface PathProps { //move to types
     path?: string
 }
 
 const Path = ({path}: PathProps) => {
+
     return (
         <div className="Path">{path}</div>
     )

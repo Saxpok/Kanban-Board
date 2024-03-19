@@ -1,8 +1,9 @@
 import React from "react";
-import "./Task.style.css"
 import Card from "antd/es/card/Card";
 
-interface TaskProps {
+import "./Task.style.css"
+
+interface TaskProps { //move to types
     index: number
     title: string,
     user: string,
@@ -21,7 +22,7 @@ const Task = ({title, index, user, numberOfComments, issueNumber, dateOfLastUpda
         return interval.getUTCDate() - 1
     }
 
-    return (
+    return ( //move to component
         <div 
         draggable={true} 
         className="Task"
