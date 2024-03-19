@@ -17,7 +17,7 @@ const RepoSearch = () => {
 
     const getRepoData = async() => {
         dispatch(fetchIssuesThunk(request))
-        dispatch(fetchRepoThunk(request))
+        //dispatch(fetchRepoThunk(request))
     }
 
     return (
