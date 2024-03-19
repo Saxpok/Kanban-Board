@@ -3,7 +3,7 @@ import "./RepoSearch.style.css"
 import RepoInput from "../../../ui/repoInput/RepoInput";
 import RepoButton from "../../../ui/repoButton/RepoButton";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { fetchIssuesThunk } from "../../../store/slices/getIssuesSlice";
+import { fetchIssuesThunk, fetchRepoThunk } from "../../../store/slices/getIssuesSlice";
 
 const RepoSearch = () => {
     const [request, setRequest] = useState('facebook/react')
@@ -17,6 +17,7 @@ const RepoSearch = () => {
 
     const getRepoData = async() => {
         dispatch(fetchIssuesThunk(request))
+        dispatch(fetchRepoThunk(request))
     }
 
     return (

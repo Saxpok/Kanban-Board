@@ -9,11 +9,10 @@ interface TaskProps {
     numberOfComments: number,
     issueNumber: number,
     dateOfLastUpdate: string,
-    dragStartHandler: any,
-    //dragEndHandler: any
+    dragEndHandler: (e: React.DragEvent<HTMLDivElement>) => void
 }
 
-const Task = ({title, index, user, numberOfComments, issueNumber, dateOfLastUpdate, dragStartHandler}: TaskProps) => {
+const Task = ({title, index, user, numberOfComments, issueNumber, dateOfLastUpdate, dragEndHandler}: TaskProps) => {
 
     const calcDaysAgo = () => {
         const now = Date.now()
@@ -26,19 +25,19 @@ const Task = ({title, index, user, numberOfComments, issueNumber, dateOfLastUpda
         <div 
         draggable={true} 
         className="Task"
-        onDragStart={dragStartHandler}
-        onDragOver={(e: any) => {
+        onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
+            e.currentTarget.style.opacity = '50%'
+        }}
+        onDragEnter={(e: React.DragEvent<HTMLDivElement>) => {
             e.preventDefault()
             e.currentTarget.style.boxShadow = '0 4px 3px gray'
         }}
-        onDragLeave={(e: any) => {
+        onDragLeave={(e: React.DragEvent<HTMLDivElement>) => {
             e.preventDefault()
             e.currentTarget.style.boxShadow = 'none'
+            e.currentTarget.style.opacity = '100%'
         }}
-        onDragEnd={(e: any) => {
-            e.preventDefault()
-            e.currentTarget.style.boxShadow = 'none'
-        }}
+        onDragEnd={dragEndHandler}
         >
             <Card title={title}>
                 <p>#{issueNumber} opened {calcDaysAgo()} days ago</p>
