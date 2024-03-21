@@ -16,7 +16,6 @@ const TaskList = ({ title, stage, dropTarget, onDragOverHandler }: TaskListProps
 
     const pickCurrentDropIndex = (event: React.DragEvent<HTMLDivElement>, index: number) =>  {
         setCurrentDropIndex(index)
-        console.log(currentDropIndex)
     }
 
     function drag(event: React.DragEvent<HTMLDivElement>, item: TaskInterface, i: number) {
@@ -24,7 +23,8 @@ const TaskList = ({ title, stage, dropTarget, onDragOverHandler }: TaskListProps
             dispatch(addIssue({ task: item, targetState: dropTarget, dropIndex: currentDropIndex }))
             dispatch(removeIssue({ task: item, taskState: stage , index: i }))
         } else {
-            dispatch(orderIssue({ task: item, targetState: dropTarget, dropIndex: currentDropIndex, index: i }))
+            dispatch(orderIssue({ task: item, targetState: dropTarget, 
+                dropIndex: currentDropIndex, index: i }))
         }
     }
 

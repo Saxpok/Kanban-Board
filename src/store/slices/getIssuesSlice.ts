@@ -74,7 +74,7 @@ const IssuesSlice = createSlice({
         builder.addCase(fetchRepoThunk.fulfilled, (state, action) => {
             state.stars = action.payload.stargazers_count
             state.userURL = action.payload.owner.html_url
-            state.repoURL = action.payload.url
+            state.repoURL = action.payload.html_url
         })
     }
 })

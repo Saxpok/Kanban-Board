@@ -15,23 +15,24 @@ const Task = ({title, index, user, numberOfComments,
         return interval.getUTCDate() - 1
     }
 
-    return ( //move to component
+    return (
         <div 
         draggable={true} 
         className="Task"
         onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
-            e.currentTarget.style.opacity = '50%'
+            console.log(e.currentTarget)
+            e.currentTarget.style.opacity = '20%'
+            e.currentTarget.style.boxShadow = '4px 6px grey'
         }}
-        onDragEnter={ dragEnterHandler
-            // (e: React.DragEvent<HTMLDivElement>) => {
-            // e.preventDefault()
-            // e.currentTarget.style.boxShadow = '0 4px 3px gray'
-            //}
-        }
+        onDragEnter={ dragEnterHandler}
+        onDragOver={(e: React.DragEvent<HTMLDivElement>) => {
+            e.currentTarget.style.marginBottom = '9%'
+        }}
         onDragLeave={(e: React.DragEvent<HTMLDivElement>) => {
             e.preventDefault()
             e.currentTarget.style.boxShadow = 'none'
             e.currentTarget.style.opacity = '100%'
+            e.currentTarget.style.marginBottom = '3%'
         }}
         onDragEnd={dragEndHandler}
         >

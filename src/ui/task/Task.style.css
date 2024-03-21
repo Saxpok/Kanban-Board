@@ -1,3 +1,4 @@
 .Task {
     margin-bottom: 3%;
+    transition: margin-bottom 0.7s;
 }

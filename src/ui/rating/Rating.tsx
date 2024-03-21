@@ -1,5 +1,4 @@
 import { RatingProps } from "types/uiPropsTypes/uiPropsTypes";
-import { useAppSelector } from "../../store/store";
 
 import "./Rating.style.css"
 
