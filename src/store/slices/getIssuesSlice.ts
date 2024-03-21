@@ -53,9 +53,17 @@ const IssuesSlice = createSlice({
         orderIssue: (state, action: PayloadAction<{task: TaskInterface, 
             targetState: ColumState | undefined, dropIndex: number, index: number}>) => {
                 if (action.payload.targetState) {
+                    if (action.payload.dropIndex === action.payload.index) {
+                        return
+                    }
                     state.data[action.payload.targetState].splice(action.payload.index, 1)
                     state.data[action.payload.targetState]
                         .splice(action.payload.dropIndex + 1, 0, action.payload.task)
+                    if (action.payload.dropIndex === action.payload.index - 1) {
+                        state.data[action.payload.targetState].splice(action.payload.index, 1)
+                        state.data[action.payload.targetState]
+                        .splice(action.payload.dropIndex, 0, action.payload.task)
+                    }
                 }
         }
     },
