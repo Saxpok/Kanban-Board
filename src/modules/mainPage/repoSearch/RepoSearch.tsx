@@ -1,15 +1,15 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, { useState } from "react";
 
-import RepoInput from "../../../ui/repoInput/RepoInput";
-import RepoButton from "../../../ui/repoButton/RepoButton";
-import { useAppDispatch, useAppSelector } from "../../../store/store";
+import RepoButton from "../../../ui/Button/Button";
+import { useAppDispatch } from "../../../store/store";
 import { fetchIssuesThunk, fetchRepoThunk } from "../../../store/slices/getIssuesSlice";
+import CustomInput from "../../../ui/CustomInput/CustomInput";
 
 import "./RepoSearch.style.css"
 
 const RepoSearch = () => {
 
-    const [request, setRequest] = useState('facebook/react')
+    const [request, setRequest] = useState('')
     const [inputMessage, setInputMessage] = useState('Enter repo URL')
     const dispatch = useAppDispatch()
 
@@ -33,7 +33,7 @@ const RepoSearch = () => {
 
     return (
         <div className="RepoSearch">
-            <RepoInput 
+            <CustomInput 
             placeHolder={inputMessage} 
             changeHandler={getRequest} 
             />

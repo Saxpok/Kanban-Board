@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 
-import MainPage from "../mainPage/MainPage";
+import MainPage from "modules/mainPage/MainPage";
 
 const MainRoute = () => {
 

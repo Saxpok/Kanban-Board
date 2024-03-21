@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Tasklist from "../../../ui/taskList/TaskList";
+import { ColumState } from "types/uiPropsTypes/uiPropsTypes";
 
 import "./TaskBlock.style.css"
 
-type List = 'open' | 'inProgress' | 'done' //move to types
-
-const LISTS: List[] = ['open', 'inProgress', 'done']
+const LISTS: ColumState[] = ['open', 'inProgress', 'done']
+const COLUM_NAMES: string[] = ['To Do', 'In Progress', 'Done']
 
 const TaskBlock = () => {
 
-    const [currentDropTarget, setCurrentDropTarget] = useState<'open' | 'inProgress' | 'done'>()
+    const [currentDropTarget, setCurrentDropTarget] = useState<ColumState>()
 
-    const pickListForDrop = (event: React.DragEvent, stage: 'open' | 'inProgress' | 'done' | undefined) => {
+    const pickListForDrop = (event: React.DragEvent, stage: ColumState | undefined) => {
         setCurrentDropTarget(stage)
     }
 
-    const makeTaskLIsts = (types: List[]) => {
+    const makeTaskLIsts = (types: ColumState[]) => {
         return types.map((item, i) => {
             return (
                 <Tasklist 
@@ -24,7 +24,7 @@ const TaskBlock = () => {
                 dropTarget={currentDropTarget} 
                 key={i} 
                 stage={item} 
-                title={item}
+                title={COLUM_NAMES[i]}
                 />  
             )
         })

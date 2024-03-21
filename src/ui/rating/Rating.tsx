@@ -1,10 +1,9 @@
+import { RatingProps } from "types/uiPropsTypes/uiPropsTypes";
 import { useAppSelector } from "../../store/store";
 
 import "./Rating.style.css"
 
-const Rating = () => {
-
-    const stars: number = useAppSelector((store) => store.issues.stars)
+const Rating = ({stars}: RatingProps) => {
 
     return (
         <div className="Rating">⭐️{stars / 1000} K stars</div>

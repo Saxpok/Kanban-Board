@@ -1,13 +1,19 @@
+import { PathProps } from "types/uiPropsTypes/uiPropsTypes"
+
 import "./Path.style.css"
 
-interface PathProps { //move to types
-    path?: string
-}
+const Path = ({pathData}: PathProps) => {
 
-const Path = ({path}: PathProps) => {
+    const splitedPath = pathData.path.split('/')
 
     return (
-        <div className="Path">{path}</div>
+        <div className="Path">
+            <a style={{textDecoration: 'none'}} 
+            href={pathData.userURL}>{splitedPath[0]}</a>
+            /
+            <a style={{textDecoration: 'none'}} 
+            href={pathData.repoURL}>{splitedPath[1]}</a>
+        </div>
     )
 }
 

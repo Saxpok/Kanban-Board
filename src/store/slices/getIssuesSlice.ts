@@ -1,19 +1,8 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { TaskInterface } from "../../types"; //rename
-
-export interface InitialState { //move to types
-    data: {
-        open: TaskInterface[],
-        inProgress: TaskInterface[],
-        done: TaskInterface[]
-    }
-    stars: number
-    userURL: string
-    repoURL: string
-    isLoading: boolean
-    path: string
-}
+import { TaskInterface } from "../../types/responseTypes/responseTypes";
+import { ColumState } from "types/uiPropsTypes/uiPropsTypes";
+import { InitialState } from "types/slicesTypes/getIssuesSliceTypes";
 
 const initialState : InitialState = {
     data: {
@@ -51,16 +40,23 @@ const IssuesSlice = createSlice({
     initialState,
     reducers: {
         addIssue: (state, action: PayloadAction<{task: TaskInterface, 
-            targetState: 'open' | 'inProgress' | 'done' | undefined}>) => { //move to types
-            if (action.payload.targetState) {
-                state.data[action.payload.targetState].push(action.payload.task)
-            }
+            targetState: ColumState | undefined, dropIndex: number}>) => {
+                if (action.payload.targetState) {
+                    state.data[action.payload.targetState]
+                        .splice(action.payload.dropIndex + 1, 0, action.payload.task)
+                }
         },
         removeIssue: (state, action: PayloadAction<{task: TaskInterface, 
-            taskState: 'open' | 'inProgress' | 'done'}>) => { //move to types
-            const filteredStateArray = state.data[action.payload.taskState]
-            .filter((item) => item.id !== action.payload.task.id)
-            state.data[action.payload.taskState] = filteredStateArray
+            taskState: ColumState, index: number}>) => {
+                state.data[action.payload.taskState].splice(action.payload.index, 1)
+        },
+        orderIssue: (state, action: PayloadAction<{task: TaskInterface, 
+            targetState: ColumState | undefined, dropIndex: number, index: number}>) => {
+                if (action.payload.targetState) {
+                    state.data[action.payload.targetState].splice(action.payload.index, 1)
+                    state.data[action.payload.targetState]
+                        .splice(action.payload.dropIndex + 1, 0, action.payload.task)
+                }
         }
     },
     extraReducers: (builder) => {
@@ -84,4 +80,4 @@ const IssuesSlice = createSlice({
 })
 
 export default IssuesSlice.reducer
-export const { removeIssue, addIssue } = IssuesSlice.actions
+export const { removeIssue, addIssue, orderIssue } = IssuesSlice.actions

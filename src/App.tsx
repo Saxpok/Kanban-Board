@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter, Routes } from 'react-router-dom';
-import MainRoute from './project/routes/MainRoute';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import MainRoute from 'modules/routes/MainRoute';
+
+import './App.css';
 
 function App() {
   return (
