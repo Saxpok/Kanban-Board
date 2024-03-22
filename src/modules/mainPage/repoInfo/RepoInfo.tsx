@@ -6,21 +6,15 @@ import "./RepoInfo.style.css"
 
 const RepoInfo = () => {
 
-    const repoData = useAppSelector((store) => {
-        return {
-            pathData: {
-                path: store.issues.path,
-                userURL: store.issues.userURL,
-                repoURL: store.issues.repoURL 
-            },
-            starsData: store.issues.stars
-        }
-    })
+    const repoStatus = useAppSelector((store) => store.issues)
     
     return (
         <div className="RepoInfo">
-            <Path pathData={repoData.pathData}/>
-            <Rating stars={repoData.starsData}/>
+            <Path pathData={{
+                path: repoStatus.path, 
+                userURL: repoStatus.userURL, 
+                repoURL: repoStatus.repoURL}}/>
+            <Rating stars={repoStatus.stars}/>
         </div>
     )
 }

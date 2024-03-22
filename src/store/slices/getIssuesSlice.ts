@@ -65,11 +65,24 @@ const IssuesSlice = createSlice({
                         .splice(action.payload.dropIndex, 0, action.payload.task)
                     }
                 }
+        },
+        setStore: (state, action: PayloadAction<{newStore: InitialState}>) => {
+            state.data = action.payload.newStore.data
+            state.isLoading = action.payload.newStore.isLoading
+            state.path = action.payload.newStore.path
+            state.repoURL = action.payload.newStore.repoURL
+            state.stars = action.payload.newStore.stars
+            state.userURL = action.payload.newStore.userURL
         }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchIssuesThunk.fulfilled, (state, action) => {
-            state.data.open = action.payload
+            state.data.open = []
+            state.data.inProgress = []
+            state.data.done = []
+            action.payload.forEach((item: TaskInterface) => {
+                state.data[item.state as ColumState].push(item)
+            })
             state.isLoading = false
             state.path = action.meta.arg
         });
@@ -88,4 +101,4 @@ const IssuesSlice = createSlice({
 })
 
 export default IssuesSlice.reducer
-export const { removeIssue, addIssue, orderIssue } = IssuesSlice.actions
+export const { removeIssue, addIssue, orderIssue, setStore } = IssuesSlice.actions

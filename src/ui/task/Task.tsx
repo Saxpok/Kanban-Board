@@ -20,7 +20,6 @@ const Task = ({title, index, user, numberOfComments,
         draggable={true} 
         className="Task"
         onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
-            console.log(e.currentTarget)
             e.currentTarget.style.opacity = '20%'
             e.currentTarget.style.boxShadow = '4px 6px grey'
         }}
