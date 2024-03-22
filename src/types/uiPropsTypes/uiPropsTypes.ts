@@ -1,10 +1,12 @@
- export interface PathProps {
+export interface PathProps {
     pathData: {
         path: string,
         userURL: string,
         repoURL: string
     }
 }
+
+export type DragHandler = (e: React.DragEvent<HTMLDivElement>) => void
 
 export interface ButtonProps {
     clickHandler: () => void
@@ -22,8 +24,8 @@ export interface TaskProps {
     numberOfComments: number,
     issueNumber: number,
     dateOfLastUpdate: string,
-    dragEndHandler: (e: React.DragEvent<HTMLDivElement>) => void,
-    dragEnterHandler: (e: React.DragEvent<HTMLDivElement>) => void
+    dragEndHandler: DragHandler,
+    dragEnterHandler: DragHandler
 }
 
 export type ColumState = 'open' | 'inProgress' | 'done'
@@ -32,7 +34,7 @@ export interface TaskListProps {
     title?: string
     stage: ColumState
     dropTarget: ColumState | undefined,
-    onDragOverHandler: (e: React.DragEvent<HTMLDivElement>) => void
+    onDragOverHandler: DragHandler
 }
 
 export interface RatingProps {

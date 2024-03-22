@@ -1,6 +1,6 @@
-import RepoSearch from "./repoSearch/RepoSearch";
-import MainContent from "./mainContent/MainContent";
-import { useAppSelector } from "../../store/store";
+import { useAppSelector } from "store/store"
+import RepoSearch from "modules/mainPage/repoSearch/RepoSearch"
+import MainContent from "modules/mainPage/mainContent/MainContent"
 
 import "./MainPage.style.css"
 

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react"
 
-import RepoButton from "../../../ui/Button/Button";
-import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { fetchIssuesThunk, fetchRepoThunk, setStore } from "../../../store/slices/getIssuesSlice";
-import CustomInput from "ui/CustomInput/CustomInput";
+import { useAppDispatch, useAppSelector } from "store/store"
+import { fetchIssuesThunk, fetchRepoThunk, setStore } from "store/slices/getIssuesSlice"
+import CustomInput from "ui/CustomInput/CustomInput"
+import Button from "ui/Button/Button"
 
 import "./RepoSearch.style.css"
 
@@ -43,7 +43,7 @@ const RepoSearch = () => {
             placeHolder={inputMessage} 
             changeHandler={getRequest} 
             />
-            <RepoButton clickHandler={getRepoData} />
+            <Button clickHandler={getRepoData} />
         </div>
     )
 }

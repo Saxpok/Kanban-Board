@@ -1,6 +1,6 @@
-import Rating from "../../../ui/rating/Rating";
-import Path from "../../../ui/path/Path";
-import { useAppSelector } from "../../../store/store";
+import { useAppSelector } from "store/store"
+import Rating from "ui/rating/Rating"
+import Path from "ui/path/Path"
 
 import "./RepoInfo.style.css"
 

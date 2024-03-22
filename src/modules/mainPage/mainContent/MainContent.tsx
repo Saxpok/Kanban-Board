@@ -1,8 +1,9 @@
-import RepoInfo from "../repoInfo/RepoInfo";
-import TaskBlock from "../taskBlock/TaskBlock";
+import { LoadingOutlined } from "@ant-design/icons"
 
-import { useAppSelector } from "../../../store/store";
-import { LoadingOutlined } from "@ant-design/icons";
+import { useAppSelector } from "store/store"
+import RepoInfo from "modules/mainPage/repoInfo/RepoInfo"
+import TaskBlock from "modules/mainPage/taskBlock/TaskBlock"
+
 
 const MainContent = () => {
 

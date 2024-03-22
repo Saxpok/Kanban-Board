@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import Task from "../task/Task";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { TaskInterface } from "../../types/responseTypes/responseTypes";
-import { addIssue, orderIssue, removeIssue } from "../../store/slices/getIssuesSlice";
+import { useAppDispatch, useAppSelector } from "store/store";
+import { addIssue, orderIssue, removeIssue } from "store/slices/getIssuesSlice";
+import Task from "ui/task/Task";
 import { TaskListProps } from "types/uiPropsTypes/uiPropsTypes";
+import { TaskInterface } from "types/responseTypes/responseTypes";
 
 import "./TaskList.style.css"
 
@@ -42,7 +42,7 @@ const TaskList = ({ title, stage, dropTarget, onDragOverHandler }: TaskListProps
                     issueNumber={item.number}
                     dateOfLastUpdate={
                         item.updated_at ?
-                            item.updated_at : //prettier
+                            item.updated_at :
                             item.created_at
                     }
                     dragEndHandler={(e: React.DragEvent<HTMLDivElement>) => drag(e, item, i)}

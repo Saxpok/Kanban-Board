@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { TaskInterface } from "../../types/responseTypes/responseTypes";
+import { TaskInterface } from "types/responseTypes/responseTypes";
 import { ColumState } from "types/uiPropsTypes/uiPropsTypes";
 import { InitialState } from "types/slicesTypes/getIssuesSliceTypes";
 

@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import IssuesSlice from "./slices/getIssuesSlice";
-
+import getIssuesSlice from "store/slices/getIssuesSlice";
 
 export const store = configureStore({
     reducer: {
-        issues: IssuesSlice
+        issues: getIssuesSlice
     }
 })
 

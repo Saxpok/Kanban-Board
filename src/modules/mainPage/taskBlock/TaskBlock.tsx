@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Tasklist from "../../../ui/taskList/TaskList";
 import { ColumState } from "types/uiPropsTypes/uiPropsTypes";
+import TaskList from "ui/taskList/TaskList";
 
 import "./TaskBlock.style.css"
 
@@ -19,7 +19,7 @@ const TaskBlock = () => {
     const makeTaskLIsts = (types: ColumState[]) => {
         return types.map((item, i) => {
             return (
-                <Tasklist 
+                <TaskList
                 onDragOverHandler={(e: React.DragEvent) => pickListForDrop(e, item)} 
                 dropTarget={currentDropTarget} 
                 key={i} 
