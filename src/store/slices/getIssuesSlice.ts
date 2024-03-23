@@ -21,14 +21,14 @@ const initialState: InitialState = {
 export const fetchIssuesThunk = createAsyncThunk(
   "issues/getIssues",
   async (request: string) => {
-    return FetchController.getIssues(request)
+    return FetchController.getIssues(request, initialState);
   }
 );
 
 export const fetchRepoThunk = createAsyncThunk(
   "issues/getRepo",
   async (request: string) => {
-    return FetchController.getRepo(request)
+    return FetchController.getRepo(request, initialState);
   }
 );
 
@@ -108,9 +108,13 @@ const IssuesSlice = createSlice({
       state.data.open = [];
       state.data.inProgress = [];
       state.data.done = [];
-      action.payload.forEach((item: TaskInterface) => {
-        state.data[item.state as ColumState].push(item);
-      });
+      try {
+        action.payload.forEach((item: TaskInterface) => {
+          state.data[item.state as ColumState].push(item);
+        });
+      } catch (e) {
+        console.log("Nothing to iterate.");
+      }
       state.isLoading = false;
       state.path = action.meta.arg;
     });
@@ -121,9 +125,13 @@ const IssuesSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(fetchRepoThunk.fulfilled, (state, action) => {
-      state.stars = action.payload.stargazers_count;
-      state.userURL = action.payload.owner.html_url;
-      state.repoURL = action.payload.html_url;
+      try {
+        state.stars = action.payload.stargazers_count;
+        state.userURL = action.payload.owner.html_url;
+        state.repoURL = action.payload.html_url;
+      } catch (e) {
+        console.log("Wrong Request.");
+      }
     });
   },
 });

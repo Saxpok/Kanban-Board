@@ -19,13 +19,15 @@ const RepoSearch = () => {
   const dispatch = useAppDispatch();
 
   const getRequest = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target) {
+    if (event.target && event.target.value.includes("https://github.com/")) {
       const splitArray = event.target.value.split("/");
       const repoPath =
         splitArray[splitArray.length - 2] +
         "/" +
         splitArray[splitArray.length - 1];
       setRequest(repoPath);
+    } else {
+      setInputMessage("Please enter valid URL");
     }
   };
 
