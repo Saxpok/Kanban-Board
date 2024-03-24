@@ -1,4 +1,4 @@
-import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 import { useAppSelector } from "store/store";
 import RepoInfo from "modules/mainPage/repoInfo/RepoInfo";
@@ -9,7 +9,7 @@ const MainContent = () => {
   const isData = useAppSelector((store) => store.issues.userURL.length);
 
   return !isLoading && !isData ? (
-    <LoadingOutlined />
+    <Spin/>
   ) : (
     <>
       <RepoInfo />

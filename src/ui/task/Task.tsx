@@ -1,9 +1,10 @@
 import React from "react";
-import Card from "antd/es/card/Card";
 
+import { Card } from "antd";
 import { TaskProps } from "types/uiPropsTypes/uiPropsTypes";
 
 import "./Task.style.css";
+
 
 const Task = ({
   title,
