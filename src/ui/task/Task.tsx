@@ -21,23 +21,20 @@ const Task = ({
     return interval.getUTCDate() - 1;
   };
 
-  const dragStart = useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
-      e.currentTarget.style.opacity = "20%";
-      e.currentTarget.style.boxShadow = "4px 6px grey";
+  const dragStart = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    e.currentTarget.style.opacity = "20%";
+    e.currentTarget.style.boxShadow = "4px 6px grey";
   }, []);
 
-  const dragOver = useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
-      e.currentTarget.style.marginBottom = "9%";
+  const dragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    e.currentTarget.style.marginBottom = "9%";
   }, []);
 
-  const dragLeave = useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
-      e.preventDefault();
-      e.currentTarget.style.boxShadow = "none";
-      e.currentTarget.style.opacity = "100%";
-      e.currentTarget.style.marginBottom = "3%";
+  const dragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.currentTarget.style.boxShadow = "none";
+    e.currentTarget.style.opacity = "100%";
+    e.currentTarget.style.marginBottom = "3%";
   }, []);
 
   return (
