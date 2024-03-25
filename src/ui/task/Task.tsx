@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { Card } from "antd";
 import { TaskProps } from "types/uiPropsTypes/uiPropsTypes";
 
 import "./Task.style.css";
-
 
 const Task = ({
   title,
@@ -22,24 +21,33 @@ const Task = ({
     return interval.getUTCDate() - 1;
   };
 
+  const dragStart = useCallback(
+    (e: React.DragEvent<HTMLDivElement>) => {
+      e.currentTarget.style.opacity = "20%";
+      e.currentTarget.style.boxShadow = "4px 6px grey";
+  }, []);
+
+  const dragOver = useCallback(
+    (e: React.DragEvent<HTMLDivElement>) => {
+      e.currentTarget.style.marginBottom = "9%";
+  }, []);
+
+  const dragLeave = useCallback(
+    (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      e.currentTarget.style.boxShadow = "none";
+      e.currentTarget.style.opacity = "100%";
+      e.currentTarget.style.marginBottom = "3%";
+  }, []);
+
   return (
     <div
       draggable={true}
       className="Task"
-      onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
-        e.currentTarget.style.opacity = "20%";
-        e.currentTarget.style.boxShadow = "4px 6px grey";
-      }}
+      onDragStart={dragStart}
       onDragEnter={dragEnterHandler}
-      onDragOver={(e: React.DragEvent<HTMLDivElement>) => {
-        e.currentTarget.style.marginBottom = "9%";
-      }}
-      onDragLeave={(e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        e.currentTarget.style.boxShadow = "none";
-        e.currentTarget.style.opacity = "100%";
-        e.currentTarget.style.marginBottom = "3%";
-      }}
+      onDragOver={dragOver}
+      onDragLeave={dragLeave}
       onDragEnd={dragEndHandler}
     >
       <Card title={title}>
